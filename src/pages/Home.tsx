@@ -4,13 +4,13 @@ import { professionals, categories } from '../data/professionals'
 
 export default function Home() {
   const navigate = useNavigate()
-  const [query, setQuery] = useState('')
+  const [category, setCategory] = useState('')
   const [city, setCity] = useState('')
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     const params = new URLSearchParams()
-    if (query) params.set('q', query)
+    if (category) params.set('category', category)
     if (city) params.set('city', city)
     navigate(`/explore?${params.toString()}`)
   }
@@ -32,13 +32,16 @@ export default function Home() {
             Discover India’s best wedding professionals. Find photographers, decorators, venues and more — or join as a professional.
           </p>
           <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-3 justify-center">
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search service or category"
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
               className="px-4 py-3 rounded text-gray-900 w-full sm:w-64"
-            />
+            >
+              <option value="">All Categories</option>
+              {categories.map((cat) => (
+                <option key={cat} value={cat}>{cat}</option>
+              ))}
+            </select>
             <input
               type="text"
               value={city}
