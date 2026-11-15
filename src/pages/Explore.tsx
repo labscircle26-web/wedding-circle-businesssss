@@ -26,17 +26,17 @@ export default function Explore() {
   }, [query, category, city, sort])
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-display text-burgundy mb-6">Explore Professionals</h1>
+    <div className="max-w-7xl mx-auto px-4 py-6 md:py-8">
+      <h1 className="text-3xl md:text-4xl font-display text-burgundy mb-6">Explore Professionals</h1>
 
-      <div className="bg-white p-4 rounded border border-gold/30 mb-8 grid md:grid-cols-4 gap-3">
+      <div className="bg-white p-4 rounded border border-gold/30 mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search name, category, city"
-          className="border rounded px-3 py-2"
+          className="border rounded px-3 py-2 w-full"
         />
-        <select value={category} onChange={(e) => setCategory(e.target.value)} className="border rounded px-3 py-2">
+        <select value={category} onChange={(e) => setCategory(e.target.value)} className="border rounded px-3 py-2 w-full">
           <option value="">All Categories</option>
           {categories.map((c) => (
             <option key={c} value={c}>{c}</option>
@@ -46,9 +46,9 @@ export default function Explore() {
           value={city}
           onChange={(e) => setCity(e.target.value)}
           placeholder="City"
-          className="border rounded px-3 py-2"
+          className="border rounded px-3 py-2 w-full"
         />
-        <select value={sort} onChange={(e) => setSort(e.target.value)} className="border rounded px-3 py-2">
+        <select value={sort} onChange={(e) => setSort(e.target.value)} className="border rounded px-3 py-2 w-full">
           <option value="relevance">Relevance</option>
           <option value="newest">Newest</option>
           <option value="rating">Highest Rated</option>
@@ -56,16 +56,25 @@ export default function Explore() {
       </div>
 
       {filtered.length === 0 ? (
-        <p className="text-center text-gray-500 py-12">No professionals found. Try different filters.</p>
+        <div className="text-center py-16 bg-white rounded border border-gold/20">
+          <p className="text-gray-600 mb-2">No professionals found</p>
+          <p className="text-sm text-gray-400 mb-6">Try changing your filters or search term</p>
+          <button
+            onClick={() => { setQuery(''); setCategory(''); setCity(''); }}
+            className="px-5 py-2 border border-burgundy text-burgundy rounded text-sm"
+          >
+            Clear filters
+          </button>
+        </div>
       ) : (
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {filtered.map((p) => (
             <Link key={p.id} to={`/profile/${p.id}`} className="bg-white border border-gold/20 rounded overflow-hidden hover:border-burgundy transition">
-              <img src={p.coverImage} alt={p.name} className="h-48 w-full object-cover" />
+              <img src={p.coverImage} alt={p.name} className="h-44 md:h-48 w-full object-cover" />
               <div className="p-4">
-                <div className="flex justify-between items-start">
-                  <h3 className="font-display text-xl text-burgundy">{p.name}</h3>
-                  {p.verified && <span className="text-xs bg-gold/20 text-burgundy px-2 py-0.5 rounded">Verified</span>}
+                <div className="flex justify-between items-start gap-2">
+                  <h3 className="font-display text-lg md:text-xl text-burgundy">{p.name}</h3>
+                  {p.verified && <span className="text-xs bg-gold/20 text-burgundy px-2 py-0.5 rounded shrink-0">Verified</span>}
                 </div>
                 <p className="text-sm text-gray-600 mt-1">{p.category} • {p.city}, {p.state}</p>
                 <p className="text-sm mt-2">Starting ₹{p.startingPrice.toLocaleString()}</p>
