@@ -24,18 +24,19 @@ export default function Home() {
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-burgundy/60" />
-        <div className="relative z-10 max-w-3xl px-4">
+        <div className="relative z-20 max-w-3xl px-4">
           <h1 className="text-4xl md:text-6xl font-display font-semibold mb-4">
             Wedding Circle Hub
           </h1>
           <p className="text-lg md:text-xl mb-8 text-ivory">
             Discover India’s best wedding professionals. Find photographers, decorators, venues and more — or join as a professional.
           </p>
-          <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-3 justify-center">
+          <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-3 justify-center relative z-30">
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="px-4 py-3 rounded text-gray-900 w-full sm:w-64"
+              className="px-4 py-3 rounded text-gray-900 w-full sm:w-64 bg-white appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-gold"
+              style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath stroke=%27%236E2433%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
             >
               <option value="">All Categories</option>
               {categories.map((cat) => (
@@ -47,7 +48,7 @@ export default function Home() {
               value={city}
               onChange={(e) => setCity(e.target.value)}
               placeholder="City"
-              className="px-4 py-3 rounded text-gray-900 w-full sm:w-48"
+              className="px-4 py-3 rounded text-gray-900 w-full sm:w-48 bg-white"
             />
             <button type="submit" className="px-6 py-3 bg-gold text-burgundy font-medium rounded hover:bg-gold/90">
               Search
