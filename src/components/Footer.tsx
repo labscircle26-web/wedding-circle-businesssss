@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Footer() {
   return (
     <footer className="bg-burgundy text-ivory mt-20">
@@ -10,27 +12,27 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold mb-3">Explore</h4>
           <ul className="space-y-2 text-ivory/80">
-            <li>Photographers</li>
-            <li>Decorators</li>
-            <li>Makeup Artists</li>
-            <li>Venues</li>
+            <li><Link to="/explore?category=Photographers" className="hover:text-gold">Photographers</Link></li>
+            <li><Link to="/explore?category=Wedding%20Decorators" className="hover:text-gold">Decorators</Link></li>
+            <li><Link to="/explore?category=Makeup%20Artists" className="hover:text-gold">Makeup Artists</Link></li>
+            <li><Link to="/explore?category=Wedding%20Venues" className="hover:text-gold">Venues</Link></li>
           </ul>
         </div>
         <div>
           <h4 className="font-semibold mb-3">Company</h4>
           <ul className="space-y-2 text-ivory/80">
-            <li>About</li>
-            <li>Contact</li>
-            <li>Privacy</li>
-            <li>Terms</li>
+            <li><Link to="/about" className="hover:text-gold">About</Link></li>
+            <li><a href="mailto:hello@weddingcircle.business" className="hover:text-gold">Contact</a></li>
+            <li><span className="cursor-default">Privacy</span></li>
+            <li><span className="cursor-default">Terms</span></li>
           </ul>
         </div>
         <div>
           <h4 className="font-semibold mb-3">For Professionals</h4>
           <ul className="space-y-2 text-ivory/80">
-            <li>Register Free</li>
-            <li>Pricing (Coming Soon)</li>
-            <li>Help Center</li>
+            <li><Link to="/register" className="hover:text-gold">Register Free</Link></li>
+            <li><span>Pricing (Coming Soon)</span></li>
+            <li><Link to="/dashboard" className="hover:text-gold">Dashboard</Link></li>
           </ul>
         </div>
       </div>
