@@ -26,10 +26,10 @@ export default function Home() {
         <div className="absolute inset-0 bg-burgundy/60" />
         <div className="relative z-10 max-w-3xl px-4">
           <h1 className="text-4xl md:text-6xl font-display font-semibold mb-4">
-            Your Work Deserves to Be Discovered.
+            Wedding Circle Hub
           </h1>
           <p className="text-lg md:text-xl mb-8 text-ivory">
-            India’s dedicated directory for wedding professionals. Create your profile, showcase your work, and grow your business.
+            Discover India’s best wedding professionals. Find photographers, decorators, venues and more — or join as a professional.
           </p>
           <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-3 justify-center">
             <input
@@ -120,21 +120,21 @@ export default function Home() {
           <div>
             <div className="text-4xl text-gold mb-3">1</div>
             <h3 className="font-display text-xl mb-2">Create Profile</h3>
-            <p className="text-gray-600">Register free and set up your business page in minutes.</p>
+            <p className="text-gray-600">Join Wedding Circle Business free and set up your page.</p>
           </div>
           <div>
             <div className="text-4xl text-gold mb-3">2</div>
             <h3 className="font-display text-xl mb-2">Showcase Work</h3>
-            <p className="text-gray-600">Upload portfolio photos, videos, and list your services.</p>
+            <p className="text-gray-600">Add portfolio, packages, and services.</p>
           </div>
           <div>
             <div className="text-4xl text-gold mb-3">3</div>
             <h3 className="font-display text-xl mb-2">Get Discovered</h3>
-            <p className="text-gray-600">Receive enquiries from couples and families across India.</p>
+            <p className="text-gray-600">Receive enquiries from couples across India.</p>
           </div>
         </div>
         <Link to="/register" className="inline-block mt-10 px-8 py-3 bg-burgundy text-white rounded hover:bg-burgundy/90">
-          Become a Wedding Professional
+          Join as Professional
         </Link>
       </section>
     </div>

@@ -9,7 +9,10 @@ export default function Dashboard() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-6 md:py-8">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-6">
-        <h1 className="text-2xl md:text-3xl font-display text-burgundy">Business Dashboard</h1>
+        <div>
+          <h1 className="text-2xl md:text-3xl font-display text-burgundy">Wedding Circle Business</h1>
+          <p className="text-sm text-gray-500">Professional Dashboard</p>
+        </div>
         <Link to="/profile/1" className="text-sm text-burgundy underline">Preview Public Profile</Link>
       </div>
 
@@ -82,16 +85,16 @@ export default function Dashboard() {
 
       {active === 'Services' && (
         <div className="bg-white p-6 rounded border border-gold/30 space-y-3">
-          <h2 className="font-display text-xl text-burgundy">Services & Pricing</h2>
-          <div className="border rounded p-3 flex justify-between text-sm">
-            <span>Wedding Photography</span>
-            <span>₹45,000</span>
+          <h2 className="font-display text-xl text-burgundy">Plans & Packages</h2>
+          <div className="border rounded p-3 text-sm">
+            <div className="font-medium">Essential — ₹45,000</div>
+            <div className="text-gray-500">Full day coverage</div>
           </div>
-          <div className="border rounded p-3 flex justify-between text-sm">
-            <span>Pre-wedding</span>
-            <span>₹25,000</span>
+          <div className="border rounded p-3 text-sm">
+            <div className="font-medium">Premium — ₹75,000</div>
+            <div className="text-gray-500">Full wedding + pre-wedding</div>
           </div>
-          <button className="px-4 py-2 border border-burgundy text-burgundy rounded text-sm">Add Service</button>
+          <button className="px-4 py-2 border border-burgundy text-burgundy rounded text-sm">Add Package</button>
         </div>
       )}
 
