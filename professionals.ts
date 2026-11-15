@@ -1,0 +1,122 @@
+export interface Professional {
+  id: string;
+  name: string;
+  category: string;
+  city: string;
+  state: string;
+  rating: number;
+  reviews: number;
+  startingPrice: number;
+  description: string;
+  verified: boolean;
+  coverImage: string;
+  logo: string;
+  experience: string;
+  services: string[];
+}
+
+export const professionals: Professional[] = [
+  {
+    id: '1',
+    name: 'Aarav Photography',
+    category: 'Photographers',
+    city: 'Mumbai',
+    state: 'Maharashtra',
+    rating: 4.8,
+    reviews: 124,
+    startingPrice: 45000,
+    description: 'Cinematic wedding photography capturing timeless moments across India.',
+    verified: true,
+    coverImage: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200',
+    logo: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=200',
+    experience: '8 years',
+    services: ['Wedding Photography', 'Pre-wedding', 'Candid', 'Albums'],
+  },
+  {
+    id: '2',
+    name: 'Mehndi by Zara',
+    category: 'Mehndi Artists',
+    city: 'Delhi',
+    state: 'Delhi',
+    rating: 4.9,
+    reviews: 89,
+    startingPrice: 8000,
+    description: 'Intricate bridal mehndi designs with traditional and contemporary styles.',
+    verified: true,
+    coverImage: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1200',
+    logo: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=200',
+    experience: '12 years',
+    services: ['Bridal Mehndi', 'Guest Mehndi', 'Custom Designs'],
+  },
+  {
+    id: '3',
+    name: 'Bloom & Petal',
+    category: 'Florists',
+    city: 'Bangalore',
+    state: 'Karnataka',
+    rating: 4.7,
+    reviews: 67,
+    startingPrice: 25000,
+    description: 'Luxury floral arrangements for Indian weddings and receptions.',
+    verified: false,
+    coverImage: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200',
+    logo: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=200',
+    experience: '6 years',
+    services: ['Bridal Bouquet', 'Stage Decor', 'Table Centerpieces'],
+  },
+  {
+    id: '4',
+    name: 'Royal Caterers',
+    category: 'Caterers',
+    city: 'Jaipur',
+    state: 'Rajasthan',
+    rating: 4.6,
+    reviews: 156,
+    startingPrice: 1200,
+    description: 'Authentic Rajasthani and multi-cuisine catering for grand weddings.',
+    verified: true,
+    coverImage: 'https://images.unsplash.com/photo-1555244162-803834f70033?w=1200',
+    logo: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=200',
+    experience: '15 years',
+    services: ['Veg Thali', 'Live Counters', 'Dessert Stations'],
+  },
+  {
+    id: '5',
+    name: 'Glamour Studio',
+    category: 'Makeup Artists',
+    city: 'Chandigarh',
+    state: 'Punjab',
+    rating: 4.9,
+    reviews: 98,
+    startingPrice: 15000,
+    description: 'Bridal makeup that enhances natural beauty with a luxurious finish.',
+    verified: true,
+    coverImage: 'https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1200',
+    logo: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=200',
+    experience: '10 years',
+    services: ['Bridal Makeup', 'Hair Styling', 'Party Makeup'],
+  },
+];
+
+export const categories = [
+  'Photographers',
+  'Cinematographers',
+  'Wedding Planners',
+  'Event Coordinators',
+  'Wedding Decorators',
+  'Florists',
+  'Makeup Artists',
+  'Hairstylists',
+  'Mehndi Artists',
+  'Caterers',
+  'Wedding Venues',
+  'DJs and Musicians',
+  'Choreographers',
+  'Bridal Boutiques',
+  'Jewellery Designers',
+  'Wedding Invitation Designers',
+  'Bakers',
+  'Rental Services',
+  'Lighting and Sound Providers',
+  'Other Wedding Professionals',
+];
