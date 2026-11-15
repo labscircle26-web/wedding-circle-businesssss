@@ -13,7 +13,17 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to={isBusiness ? '/dashboard' : '/'} className="flex items-center gap-2">
-            <img src="/logo.png" alt="Logo" className="h-9 w-9" />
+            <svg className="h-9 w-9" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="18" fill="#6E2433" stroke="#C4A574" strokeWidth="4"/>
+              <circle cx="18" cy="32" r="12" fill="#F6F1E8" stroke="#C4A574" strokeWidth="3"/>
+              <circle cx="82" cy="28" r="12" fill="#F6F1E8" stroke="#C4A574" strokeWidth="3"/>
+              <circle cx="78" cy="72" r="10" fill="#F6F1E8" stroke="#C4A574" strokeWidth="3"/>
+              <circle cx="28" cy="78" r="14" fill="#6E2433" stroke="#C4A574" strokeWidth="3"/>
+              <line x1="50" y1="50" x2="18" y2="32" stroke="#C4A574" strokeWidth="3"/>
+              <line x1="50" y1="50" x2="82" y2="28" stroke="#C4A574" strokeWidth="3"/>
+              <line x1="50" y1="50" x2="78" y2="72" stroke="#C4A574" strokeWidth="3"/>
+              <line x1="50" y1="50" x2="28" y2="78" stroke="#C4A574" strokeWidth="3"/>
+            </svg>
             <span className="text-xl md:text-2xl font-display text-burgundy font-semibold">{brand}</span>
           </Link>
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
