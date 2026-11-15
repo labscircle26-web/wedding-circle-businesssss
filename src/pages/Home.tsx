@@ -53,6 +53,27 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-burgundy text-ivory py-10">
+        <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div>
+            <div className="text-3xl font-display">500+</div>
+            <div className="text-sm text-ivory/80 mt-1">Professionals</div>
+          </div>
+          <div>
+            <div className="text-3xl font-display">40+</div>
+            <div className="text-sm text-ivory/80 mt-1">Cities</div>
+          </div>
+          <div>
+            <div className="text-3xl font-display">10k+</div>
+            <div className="text-sm text-ivory/80 mt-1">Enquiries</div>
+          </div>
+          <div>
+            <div className="text-3xl font-display">4.8</div>
+            <div className="text-sm text-ivory/80 mt-1">Avg Rating</div>
+          </div>
+        </div>
+      </section>
+
       <section className="max-w-7xl mx-auto px-4 py-16">
         <h2 className="text-3xl font-display text-burgundy text-center mb-10">Browse Categories</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
