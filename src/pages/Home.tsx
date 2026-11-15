@@ -1,7 +1,20 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { professionals, categories } from '../data/professionals'
 
 export default function Home() {
+  const navigate = useNavigate()
+  const [query, setQuery] = useState('')
+  const [city, setCity] = useState('')
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    const params = new URLSearchParams()
+    if (query) params.set('q', query)
+    if (city) params.set('city', city)
+    navigate(`/explore?${params.toString()}`)
+  }
+
   return (
     <div>
       <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center text-center text-white">
@@ -18,21 +31,25 @@ export default function Home() {
           <p className="text-lg md:text-xl mb-8 text-ivory">
             India’s dedicated directory for wedding professionals. Create your profile, showcase your work, and grow your business.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-3 justify-center">
             <input
               type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
               placeholder="Search service or category"
               className="px-4 py-3 rounded text-gray-900 w-full sm:w-64"
             />
             <input
               type="text"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
               placeholder="City"
               className="px-4 py-3 rounded text-gray-900 w-full sm:w-48"
             />
-            <Link to="/explore" className="px-6 py-3 bg-gold text-burgundy font-medium rounded hover:bg-gold/90">
+            <button type="submit" className="px-6 py-3 bg-gold text-burgundy font-medium rounded hover:bg-gold/90">
               Search
-            </Link>
-          </div>
+            </button>
+          </form>
         </div>
       </section>
 
@@ -53,13 +70,19 @@ export default function Home() {
 
       <section className="bg-blush/50 py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-display text-burgundy text-center mb-10">Featured Professionals</h2>
+          <div className="flex justify-between items-center mb-10">
+            <h2 className="text-3xl font-display text-burgundy">Featured Professionals</h2>
+            <Link to="/explore" className="text-burgundy text-sm underline">View all</Link>
+          </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {professionals.slice(0, 3).map((p) => (
+            {professionals.slice(0, 6).map((p) => (
               <Link key={p.id} to={`/profile/${p.id}`} className="bg-white rounded overflow-hidden shadow-sm hover:shadow-md transition">
                 <img src={p.coverImage} alt={p.name} className="h-48 w-full object-cover" />
                 <div className="p-4">
-                  <h3 className="font-display text-xl text-burgundy">{p.name}</h3>
+                  <div className="flex justify-between items-start">
+                    <h3 className="font-display text-xl text-burgundy">{p.name}</h3>
+                    {p.verified && <span className="text-xs bg-gold/20 text-burgundy px-2 py-0.5 rounded">Verified</span>}
+                  </div>
                   <p className="text-sm text-gray-600">{p.category} • {p.city}</p>
                   <p className="mt-2 text-sm">₹{p.startingPrice.toLocaleString()} onwards</p>
                   <div className="mt-2 text-gold text-sm">★ {p.rating} ({p.reviews})</div>

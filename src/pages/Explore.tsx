@@ -5,9 +5,11 @@ import { professionals, categories } from '../data/professionals'
 export default function Explore() {
   const [searchParams] = useSearchParams()
   const initialCat = searchParams.get('category') || ''
-  const [query, setQuery] = useState('')
+  const initialQ = searchParams.get('q') || ''
+  const initialCity = searchParams.get('city') || ''
+  const [query, setQuery] = useState(initialQ)
   const [category, setCategory] = useState(initialCat)
-  const [city, setCity] = useState('')
+  const [city, setCity] = useState(initialCity)
   const [sort, setSort] = useState('relevance')
 
   const filtered = useMemo(() => {

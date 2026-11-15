@@ -1,9 +1,13 @@
+import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { professionals } from '../data/professionals'
 
 export default function Profile() {
   const { id } = useParams()
   const pro = professionals.find((p) => p.id === id)
+  const [showEnquiry, setShowEnquiry] = useState(false)
+  const [sent, setSent] = useState(false)
+  const [form, setForm] = useState({ name: '', phone: '', message: '' })
 
   if (!pro) {
     return (
@@ -12,6 +16,16 @@ export default function Profile() {
         <Link to="/explore" className="text-burgundy underline mt-4 inline-block">Back to Explore</Link>
       </div>
     )
+  }
+
+  const handleEnquiry = (e: React.FormEvent) => {
+    e.preventDefault()
+    setSent(true)
+    setTimeout(() => {
+      setShowEnquiry(false)
+      setSent(false)
+      setForm({ name: '', phone: '', message: '' })
+    }, 2000)
   }
 
   return (
@@ -37,7 +51,10 @@ export default function Profile() {
             <div className="text-right">
               <div className="text-2xl font-display text-burgundy">₹{pro.startingPrice.toLocaleString()}</div>
               <div className="text-sm text-gray-500">starting from</div>
-              <button className="mt-3 px-6 py-2 bg-burgundy text-white rounded hover:bg-burgundy/90">
+              <button
+                onClick={() => setShowEnquiry(true)}
+                className="mt-3 px-6 py-2 bg-burgundy text-white rounded hover:bg-burgundy/90"
+              >
                 Send Enquiry
               </button>
             </div>
@@ -70,6 +87,49 @@ export default function Profile() {
           </div>
         </div>
       </div>
+
+      {showEnquiry && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={() => setShowEnquiry(false)}>
+          <div className="bg-white rounded-lg p-6 max-w-md w-full" onClick={(e) => e.stopPropagation()}>
+            {sent ? (
+              <div className="text-center py-8">
+                <p className="text-burgundy font-display text-xl">Enquiry sent!</p>
+                <p className="text-sm text-gray-500 mt-2">The professional will contact you soon.</p>
+              </div>
+            ) : (
+              <>
+                <h3 className="font-display text-xl text-burgundy mb-4">Send Enquiry to {pro.name}</h3>
+                <form onSubmit={handleEnquiry} className="space-y-3">
+                  <input
+                    required
+                    placeholder="Your name"
+                    value={form.name}
+                    onChange={(e) => setForm({...form, name: e.target.value})}
+                    className="w-full border rounded px-3 py-2"
+                  />
+                  <input
+                    required
+                    placeholder="Phone number"
+                    value={form.phone}
+                    onChange={(e) => setForm({...form, phone: e.target.value})}
+                    className="w-full border rounded px-3 py-2"
+                  />
+                  <textarea
+                    placeholder="Message (optional)"
+                    value={form.message}
+                    onChange={(e) => setForm({...form, message: e.target.value})}
+                    className="w-full border rounded px-3 py-2 h-20"
+                  />
+                  <div className="flex gap-2">
+                    <button type="button" onClick={() => setShowEnquiry(false)} className="flex-1 border py-2 rounded">Cancel</button>
+                    <button type="submit" className="flex-1 bg-burgundy text-white py-2 rounded">Send</button>
+                  </div>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
