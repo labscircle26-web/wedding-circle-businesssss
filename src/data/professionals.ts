@@ -1,3 +1,10 @@
+export interface Package {
+  name: string;
+  price: number;
+  description: string;
+  includes: string[];
+}
+
 export interface Professional {
   id: string;
   name: string;
@@ -13,6 +20,7 @@ export interface Professional {
   logo: string;
   experience: string;
   services: string[];
+  packages: Package[];
 }
 
 export const professionals: Professional[] = [
@@ -31,6 +39,11 @@ export const professionals: Professional[] = [
     logo: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=200',
     experience: '8 years',
     services: ['Wedding Photography', 'Pre-wedding', 'Candid', 'Albums'],
+    packages: [
+      { name: 'Essential', price: 45000, description: 'Full day coverage', includes: ['1 photographer', '500 edited photos', 'Online gallery'] },
+      { name: 'Premium', price: 75000, description: 'Full wedding + pre-wedding', includes: ['2 photographers', '800 photos', 'Album', 'Pre-wedding shoot'] },
+      { name: 'Luxury', price: 120000, description: 'Complete cinematic package', includes: ['2 photographers', 'Cinematic film', 'Premium album', 'Drone'] },
+    ],
   },
   {
     id: '2',
@@ -47,6 +60,11 @@ export const professionals: Professional[] = [
     logo: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=200',
     experience: '12 years',
     services: ['Bridal Mehndi', 'Guest Mehndi', 'Custom Designs'],
+    packages: [
+      { name: 'Bridal Basic', price: 8000, description: 'Full hands + feet', includes: ['Traditional design', '2 hours'] },
+      { name: 'Bridal Premium', price: 15000, description: 'Detailed bridal mehndi', includes: ['Custom design', 'Full arms', 'Touch-up'] },
+      { name: 'Party Package', price: 25000, description: 'Bridal + guests', includes: ['Bridal full', 'Up to 10 guests'] },
+    ],
   },
   {
     id: '3',
@@ -63,6 +81,11 @@ export const professionals: Professional[] = [
     logo: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=200',
     experience: '6 years',
     services: ['Bridal Bouquet', 'Stage Decor', 'Table Centerpieces'],
+    packages: [
+      { name: 'Bouquet Only', price: 25000, description: 'Bridal + bridesmaids', includes: ['1 bridal bouquet', '4 bridesmaid bouquets'] },
+      { name: 'Reception Decor', price: 80000, description: 'Tables + entrance', includes: ['Centerpieces', 'Entrance arch', 'Stage flowers'] },
+      { name: 'Full Wedding', price: 150000, description: 'Complete floral coverage', includes: ['All events', 'Mandap', 'Stage', 'Tables'] },
+    ],
   },
   {
     id: '4',
@@ -79,6 +102,11 @@ export const professionals: Professional[] = [
     logo: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=200',
     experience: '15 years',
     services: ['Veg Thali', 'Live Counters', 'Dessert Stations'],
+    packages: [
+      { name: 'Silver (per plate)', price: 1200, description: 'Basic veg menu', includes: ['4 starters', '2 main', 'Dessert'] },
+      { name: 'Gold (per plate)', price: 1800, description: 'Premium veg + live counters', includes: ['Live chat', 'Paneer dishes', 'Desserts'] },
+      { name: 'Platinum (per plate)', price: 2500, description: 'Multi-cuisine grand menu', includes: ['Live stations', 'International dishes', 'Premium desserts'] },
+    ],
   },
   {
     id: '5',
@@ -95,6 +123,11 @@ export const professionals: Professional[] = [
     logo: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=200',
     experience: '10 years',
     services: ['Bridal Makeup', 'Hair Styling', 'Party Makeup'],
+    packages: [
+      { name: 'Bridal Makeup', price: 15000, description: 'Full bridal look', includes: ['Makeup', 'Hair styling', 'Draping'] },
+      { name: 'Bridal + Party', price: 22000, description: 'Wedding + reception', includes: ['Two looks', 'Hair change'] },
+      { name: 'Family Package', price: 35000, description: 'Bridal + 3 family members', includes: ['Bridal full', '3 party makeups'] },
+    ],
   },
   {
     id: '6',
@@ -111,6 +144,11 @@ export const professionals: Professional[] = [
     logo: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=200',
     experience: '20 years',
     services: ['Banquet', 'Outdoor Lawn', 'Accommodation'],
+    packages: [
+      { name: 'Lawn Wedding', price: 350000, description: 'Outdoor ceremony + reception', includes: ['Lawn', 'Basic decor', 'Seating for 300'] },
+      { name: 'Palace Package', price: 650000, description: 'Indoor + outdoor', includes: ['Banquet hall', 'Lawn', 'Accommodation for 50'] },
+      { name: 'Royal Experience', price: 1200000, description: 'Full palace takeover', includes: ['Multiple venues', 'Stay for 100 guests', 'Catering coordination'] },
+    ],
   },
   {
     id: '7',
@@ -127,6 +165,11 @@ export const professionals: Professional[] = [
     logo: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=200',
     experience: '7 years',
     services: ['DJ', 'Live Band', 'Sound System'],
+    packages: [
+      { name: 'DJ Only', price: 20000, description: '4 hours DJ', includes: ['DJ', 'Basic sound', 'Lights'] },
+      { name: 'DJ + Band', price: 45000, description: 'Sangeet special', includes: ['DJ', 'Live singers', 'Full sound'] },
+      { name: 'Full Night', price: 70000, description: 'Reception complete', includes: ['DJ', 'Band', 'Emcee', 'Lights'] },
+    ],
   },
   {
     id: '8',
@@ -143,6 +186,11 @@ export const professionals: Professional[] = [
     logo: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=200',
     experience: '11 years',
     services: ['Stage Decor', 'Mandap', 'Entrance'],
+    packages: [
+      { name: 'Stage Only', price: 80000, description: 'Main stage design', includes: ['Backdrop', 'Lighting', 'Florals'] },
+      { name: 'Mandap + Stage', price: 150000, description: 'Ceremony setup', includes: ['Mandap', 'Stage', 'Entrance'] },
+      { name: 'Full Decor', price: 250000, description: 'Complete venue styling', includes: ['All areas', 'Lighting design', 'Custom theme'] },
+    ],
   },
 ];
 

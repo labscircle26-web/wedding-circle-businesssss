@@ -84,7 +84,7 @@ export default function Profile() {
               <div className="text-2xl font-display text-burgundy">₹{pro.startingPrice.toLocaleString()}</div>
               <div className="text-sm text-gray-500">starting from</div>
               <button onClick={() => setShowEnquiry(true)} className="block w-full px-6 py-2 bg-burgundy text-white rounded hover:bg-burgundy/90">Send Enquiry</button>
-              <div className="flex gap-2 justify-end">
+              <div className="flex gap-2 justify-end flex-wrap">
                 <button onClick={toggleSave} className="px-3 py-1 text-sm border rounded">{saved ? 'Saved' : 'Save'}</button>
                 <button onClick={share} className="px-3 py-1 text-sm border rounded">{copied ? 'Copied' : 'Share'}</button>
                 <button onClick={whatsapp} className="px-3 py-1 text-sm bg-green-600 text-white rounded">WhatsApp</button>
@@ -100,6 +100,26 @@ export default function Profile() {
               ))}
             </div>
           </div>
+
+          {pro.packages && pro.packages.length > 0 && (
+            <div className="mt-8 border-t pt-6">
+              <h2 className="font-display text-xl text-burgundy mb-4">Plans & Packages</h2>
+              <div className="grid md:grid-cols-3 gap-4">
+                {pro.packages.map((pkg) => (
+                  <div key={pkg.name} className="border border-gold/30 rounded p-4">
+                    <h3 className="font-display text-lg text-burgundy">{pkg.name}</h3>
+                    <div className="text-2xl font-display text-burgundy my-2">₹{pkg.price.toLocaleString()}</div>
+                    <p className="text-sm text-gray-600 mb-3">{pkg.description}</p>
+                    <ul className="text-sm text-gray-700 space-y-1">
+                      {pkg.includes.map((item) => (
+                        <li key={item}>• {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="mt-8">
             <h2 className="font-display text-xl text-burgundy mb-3">Portfolio</h2>
