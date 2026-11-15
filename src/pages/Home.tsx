@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { professionals, categories } from '../data/professionals'
 
@@ -6,6 +6,18 @@ export default function Home() {
   const navigate = useNavigate()
   const [category, setCategory] = useState('')
   const [city, setCity] = useState('')
+  const [open, setOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -32,17 +44,37 @@ export default function Home() {
             Discover India’s best wedding professionals. Find photographers, decorators, venues and more — or join as a professional.
           </p>
           <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-3 justify-center relative z-30">
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="px-4 py-3 rounded text-gray-900 w-full sm:w-64 bg-white appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-gold"
-              style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 20 20%27%3E%3Cpath stroke=%27%236E2433%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%271.5%27 d=%27m6 8 4 4 4-4%27/%3E%3C/svg%3E")', backgroundPosition: 'right 0.75rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
-            >
-              <option value="">All Categories</option>
-              {categories.map((cat) => (
-                <option key={cat} value={cat}>{cat}</option>
-              ))}
-            </select>
+            <div ref={dropdownRef} className="relative w-full sm:w-64">
+              <button
+                type="button"
+                onClick={() => setOpen(!open)}
+                className="w-full px-4 py-3 rounded bg-white text-gray-900 text-left flex justify-between items-center"
+              >
+                <span className={category ? '' : 'text-gray-500'}>{category || 'All Categories'}</span>
+                <span className="text-burgundy">▾</span>
+              </button>
+              {open && (
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gold/30 rounded shadow-lg max-h-60 overflow-y-auto z-50">
+                  <button
+                    type="button"
+                    onClick={() => { setCategory(''); setOpen(false); }}
+                    className="w-full text-left px-4 py-2 hover:bg-blush text-gray-900 text-sm"
+                  >
+                    All Categories
+                  </button>
+                  {categories.map((cat) => (
+                    <button
+                      key={cat}
+                      type="button"
+                      onClick={() => { setCategory(cat); setOpen(false); }}
+                      className="w-full text-left px-4 py-2 hover:bg-blush text-gray-900 text-sm"
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             <input
               type="text"
               value={city}
