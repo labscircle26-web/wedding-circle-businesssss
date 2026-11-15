@@ -12,8 +12,9 @@ export default function Header() {
     <header className="bg-white/90 backdrop-blur border-b border-gold/30 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to={isBusiness ? '/dashboard' : '/'} className="text-xl md:text-2xl font-display text-burgundy font-semibold">
-            {brand}
+          <Link to={isBusiness ? '/dashboard' : '/'} className="flex items-center gap-2">
+            <img src="/logo.png" alt="Logo" className="h-9 w-9" />
+            <span className="text-xl md:text-2xl font-display text-burgundy font-semibold">{brand}</span>
           </Link>
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
             {!isBusiness && (
