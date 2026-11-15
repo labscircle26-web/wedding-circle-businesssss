@@ -12,6 +12,8 @@ import Contact from './pages/Contact'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import Pricing from './pages/Pricing'
+import FAQ from './pages/FAQ'
+import City from './pages/City'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -31,6 +33,8 @@ export default function App() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/city/:city" element={<City />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
